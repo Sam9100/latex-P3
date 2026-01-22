@@ -1,41 +1,38 @@
-\subsection{State-of-the-Art Penelitian}
+% BAB II - LANDASAN TEORI
 
-Bagian ini menjabarkan hasil \textit{systematic literature review} terhadap referensi utama serta yang berkaitan dengan topik penelitian \parencite{lawoyin2014}. Bagian ini ditulis minimal \textbf{4000 kata} dan maksimal \textbf{5000 kata}, dalam beberapa paragraf (fleksibel).
+\subsection{Tinjauan Pustaka}
 
-Pada bagian ini \textbf{diakhiri dengan tabel} \textit{state-of-the-art} yang berisi ringkasan dari hasil \textit{systematic literature review}. Sumber pustaka atau referensi primer yang relevan dengan mengutamakan hasil penelitian ilmiah atau teknologi yang terkini. Disarankan penggunaan sumber pustaka 5 tahun terakhir (untuk prosiding konferensi) dan 10 tahun terakhir (bergantung pada relevansi teori atau metode) untuk jurnal atau buku teks.
+Bab ini menguraikan kerangka teori dan konsep teknologi yang menjadi fondasi dalam pengembangan asisten virtual ``GOPOS''. Pemahaman mendalam mengenai teknologi-teknologi ini sangat esensial untuk menjelaskan bagaimana sistem dapat beroperasi secara responsif, mulai dari manajemen data yang tidak terstruktur, mekanisme komunikasi antar-server, hingga penerapan kecerdasan buatan generatif dalam memproses bahasa manusia.
 
-Pada bagian akhir tabel, sebutkan usulan penelitian Anda untuk melihat posisi penelitian Anda dalam \textit{state-of-the-art} penelitian.
+\subsubsection{Efisiensi Bahasa Pemrograman Golang (Go)}
 
-\begin{table}[htbp]
-    \caption{State-of-the-Art Penelitian}
-    \label{tab:sota}
-    \small
-    \begin{tabularx}{\textwidth}{@{} c >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}l @{}}
-    \toprule
-    \textbf{No} & \textbf{Peneliti} & \textbf{Objective} & \textbf{Metode \& Hasil} & \textbf{Keterangan} \\
-    \midrule
-    
-    1 & \textcite{lawoyin2014} & 
-    Analisis sistem Holter EEG 3D secara real-time. & 
-    Pengolahan sinyal EEG dengan HPF, NFFT. Klasifikasi SVM. & 
-    Metode dasar \\
-    
-    \addlinespace
-    
-    2 & \textcite{example2023} & 
-    Meningkatkan akurasi deteksi kantuk. & 
-    Menggunakan Deep Learning (CNN) dengan dataset XYZ. Akurasi 95\%. & 
-    Metode modern \\
-    
-    \addlinespace
-    
-    3 & \textcite{textbook2020} & 
-    Teori dasar pengukuran sinyal biomedis. & 
-    Menjelaskan prinsip kerja EEG dan EKG konvensional. & 
-    Referensi teori \\
-    
-    \bottomrule
-    \end{tabularx}
-\end{table}
+Dalam pengembangan sistem backend modern yang menuntut kecepatan tinggi, pemilihan bahasa pemrograman menjadi faktor krusial. Go, atau sering disebut Golang, adalah bahasa pemrograman kompilasi (\textit{compiled language}) yang dikembangkan oleh Google. Keunggulan utama Go terletak pada efisiensi memori dan kemampuannya menangani proses konkurensi (banyak tugas dalam satu waktu) melalui fitur \textit{goroutines}. Dalam konteks aplikasi GOPOS, Go dipilih bukan hanya karena kecepatannya, tetapi karena ketegasan tipe datanya (\textit{static typing}) yang meminimalisir kesalahan logika saat kompilasi. Hal ini sangat relevan ketika sistem harus memproses validasi struktur data JSON yang kompleks dari pesan WhatsApp secara \textit{real-time} sebelum meneruskannya ke layanan lain \parencite{dimara2024}.
 
-Berdasarkan \textit{state-of-the-art} yang dibuat, berikan penjelasan tentang potensi gap penelitian yang dapat diangkat untuk penelitian Anda. Gunakan lebih dari satu tabel \textit{state-of-the-art} jika terdapat beberapa metode atau teori yang digunakan dari hasil eksplorasi Anda.
+\subsubsection{Paradigma Serverless pada Google Cloud Platform}
+
+Pergeseran dari arsitektur server tradisional (monolitik) menuju arsitektur cloud modern telah melahirkan konsep \textit{Serverless Computing}. Dalam proyek ini, teknologi yang diadopsi adalah Google Cloud Functions (GCF) sebagai bagian dari ekosistem Google Cloud Platform. Secara teoritis, \textit{Serverless} atau \textit{Function-as-a-Service} (FaaS) memungkinkan pengembang untuk mengunggah kode fungsi tunggal tanpa perlu memikirkan penyediaan atau pemeliharaan server fisik. Keuntungan signifikannya adalah skalabilitas otomatis; sistem akan secara cerdas menyesuaikan sumber daya komputasi berdasarkan volume pesan yang masuk. Jika tidak ada interaksi dari pengguna, sistem akan ``tidur'' sehingga tidak membebankan biaya operasional, menjadikannya solusi yang sangat efisien untuk aplikasi berbasis event seperti \textit{chatbot} \parencite{gcpjournal2015}.
+
+\subsubsection{Large Language Model (LLM) dan Google Gemini}
+
+Berbeda dengan pendekatan sistem pakar terdahulu yang mengandalkan aturan kaku (\textit{rule-based}), perkembangan kecerdasan buatan kini telah mencapai tahap Generatif. Google Gemini merupakan salah satu model bahasa besar (\textit{Large Language Model}) mutakhir yang memiliki kemampuan multimodal. Teori dasar di balik teknologi ini adalah \textit{Natural Language Processing} (NLP), di mana mesin dilatih dengan dataset masif untuk memahami, memprediksi, dan menghasilkan teks yang menyerupai gaya bicara manusia. Dalam implementasi GOPOS, Gemini tidak sekadar mencocokkan kata kunci, melainkan memahami konteks percakapan. Hal ini memungkinkan sistem untuk memberikan jawaban yang luwes dan relevan terhadap pertanyaan pengguna yang bervariasi, meskipun pertanyaan tersebut belum pernah diprogram sebelumnya secara spesifik \parencite{rachmat2024}.
+
+\subsubsection{Fleksibilitas Basis Data MongoDB (NoSQL)}
+
+Sistem aplikasi percakapan menghasilkan data yang sangat dinamis dan seringkali tidak memiliki struktur yang pasti. Oleh karena itu, penggunaan basis data relasional (RDBMS) seperti MySQL terkadang kurang efisien karena skemanya yang kaku. Sebagai alternatif, proyek ini menerapkan MongoDB, sebuah basis data NoSQL berbasis dokumen. MongoDB menyimpan data dalam format BSON (\textit{Binary JSON}), yang selaras dengan format pertukaran data pada aplikasi web modern. Fleksibilitas ini memungkinkan GOPOS untuk menyimpan riwayat percakapan (\textit{chat logs}) yang panjangnya bervariasi, serta menyimpan metadata sesi pengguna tanpa perlu melakukan perubahan struktur tabel yang rumit. Hal ini mempercepat proses pengembangan dan adaptasi fitur baru di masa mendatang \parencite{barman2025}.
+
+\subsubsection{Mekanisme Webhook pada WhatsApp Gateway}
+
+Komunikasi antara pengguna WhatsApp dan server aplikasi terjadi melalui perantara yang disebut Gateway. Teknologi kunci yang digunakan di sini adalah Webhook. Secara konsep, Webhook adalah metode komunikasi ``reaktif''. Berbeda dengan metode \textit{polling} di mana server harus terus-menerus bertanya ``apakah ada pesan baru?'', Webhook bekerja dengan cara mengirimkan notifikasi data (HTTP POST) secara otomatis ke URL server tujuan segera setelah peristiwa terjadi (pesan diterima). Dalam sistem GOPOS, mekanisme ini memastikan bahwa setiap pesan yang dikirim pengguna dapat diterima dan diproses oleh sistem backend dengan latensi yang sangat rendah, menciptakan pengalaman chat yang responsif \parencite{aidyn2024}.
+
+\subsection{Diagram Konseptual}
+
+Konsep Dasar Komunikasi Webhook Diagram ini menggambarkan bagaimana teori Webhook bekerja dalam menghantarkan pesan secara \textit{real-time}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/Diagram Konseptual Webhook.png}
+    \caption{Diagram Konseptual Webhook}
+    \label{fig:diagram_webhook}
+\end{figure}
+
+Penjelasan Singkat Diagram: Diagram di atas mengilustrasikan landasan teori komunikasi \textit{event driven}. Server aplikasi tidak perlu aktif memantau (\textit{polling}), melainkan hanya menunggu kiriman data (\textit{push}) dari Webhook saat terjadi pemicu berupa pesan masuk dari pengguna.

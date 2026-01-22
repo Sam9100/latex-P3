@@ -1,56 +1,169 @@
-Pada bagian ini, tuliskan minimal \textbf{3000 kata} dan maksimal \textbf{4000 kata} dalam sub-bab atau beberapa paragraf. Tuliskan secara padat dan ringkas mengenai pemahaman atau penguasaan Anda terhadap teori atau metode yang relevan dan digunakan dalam penelitian.
+% BAB III - METODOLOGI PENELITIAN
 
-Misalnya, jika dalam penelitian digunakan \textit{intelligent control system} dengan \textit{Fuzzy Logic Type II}, tuliskan bagian-bagian penting tentang \textit{Fuzzy Logic Type II} yang digunakan dalam \textit{intelligent control system}.
+\subsection{Metodologi Pengembangan Sistem}
 
-\subsection{Teori Dasar}
-
-Jelaskan teori-teori dasar yang menjadi fondasi penelitian Anda\cite{Li2026Adaptive}. Pastikan penjelasan mencakup:
-\begin{itemize}[leftmargin=*]
-    \item Definisi dan konsep fundamental
-    \item Prinsip-prinsip utama
-    \item Rumusan matematis yang relevan
-    \item Asumsi-asumsi yang digunakan
-\end{itemize}
-
-Contoh penulisan rumus matematika menggunakan \LaTeX. Persamaan \eqref{eq:entropy} menunjukkan rumus \textit{Shannon Entropy} untuk menghitung ketidakpastian informasi:
-
-\begin{equation}
-    H(X) = - \sum_{i=1}^{n} P(x_i) \log_2 P(x_i)
-    \label{eq:entropy}
-\end{equation}
-\myequations{Shannon Entropy}
-
-Dimana $H(X)$ adalah entropi, $n$ adalah jumlah kemungkinan kejadian, dan $P(x_i)$ adalah probabilitas kejadian $i$.
-
-Contoh rumus lain adalah \textit{Euclidean Distance} pada Persamaan \eqref{eq:euclidean}:
-
-\begin{equation}
-    d(p,q) = \sqrt{\sum_{i=1}^{n} (q_i - p_i)^2}
-    \label{eq:euclidean}
-\end{equation}
-\myequations{Euclidean Distance}
-
-
-\subsection{Metodologi Penelitian}
-
-Jelaskan metodologi penelitian yang akan digunakan, mencakup pendekatan penelitian, teknik pengumpulan data, dan analisis.
+Dalam membangun sistem asisten virtual GOPOS, metode pengembangan perangkat lunak yang diterapkan adalah \textit{Agile Development} dengan pendekatan Scrum. Pemilihan metode ini didasari oleh karakteristik proyek berbasis kecerdasan buatan (\textit{Artificial Intelligence}) yang dinamis, di mana akurasi respons AI dan logika bisnis seringkali membutuhkan penyesuaian berulang (iterasi) berdasarkan hasil uji coba.
 
 \begin{figure}[htbp]
     \centering
-    % Diagram alir penelitian
-    \includegraphics[width=0.6\textwidth]{figures/diagram-alir-penelitian.png}
-    \caption{Contoh Diagram Alir Penelitian (Dummy Figure)}
-    \label{fig:alur_penelitian}
+    \includegraphics[width=0.7\textwidth]{figures/Metode Agile.png}
+    \caption{Metode Agile}
+    \label{fig:metode_agile}
 \end{figure}
 
-Setelah Gambar \ref{fig:alur_penelitian}, jelaskan langkah-langkah detailnya:
+Tahapan pengembangan yang dilakukan meliputi:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Perencanaan (Planning):} Mengidentifikasi masalah pada layanan pelanggan Pos Indonesia dan menentukan fitur prioritas (Cek Ongkir \& Chatbot AI).
+    \item \textbf{Analisis \& Desain (Analysis \& Design):} Merancang arsitektur \textit{serverless} pada Google Cloud dan skema data NoSQL.
+    \item \textbf{Implementasi (Development):} Pengkodean sistem backend menggunakan Golang dan integrasi API Gemini.
+    \item \textbf{Pengujian (Testing):} Melakukan \textit{Unit Testing} pada fungsi logika dan \textit{User Acceptance Testing} (UAT) melalui WhatsApp.
+    \item \textbf{Penyebaran (Deployment):} Mengunggah kode ke Google Cloud Functions melalui GitHub Actions.
+\end{enumerate}
+
+\subsection{Analisis Kebutuhan Sistem}
+
+Tahap analisis kebutuhan bertujuan untuk memetakan spesifikasi teknis dan fungsional agar sistem dapat berjalan optimal sesuai tujuan penelitian.
+
+\subsubsection{Kebutuhan Perangkat Lunak (Software Requirements)}
+
+Lingkungan pengembangan sistem ini membutuhkan dukungan perangkat lunak sebagai berikut:
+
 \begin{itemize}[leftmargin=*]
-    \item Pendekatan penelitian
-    \item Teknik pengumpulan data
-    \item Metode analisis
-    \item Validasi dan verifikasi
+    \item \textbf{Bahasa Pemrograman:} Go (Golang) versi 1.2x ke atas.
+    \item \textbf{Cloud Provider:} Google Cloud Platform (Cloud Functions, Cloud Build).
+    \item \textbf{Database:} MongoDB Atlas (Cloud NoSQL).
+    \item \textbf{AI Service:} Google Gemini Pro API.
+    \item \textbf{Messaging Gateway:} WhatsAuth / WhatsApp API.
+    \item \textbf{Editor Kode:} Visual Studio Code.
 \end{itemize}
 
-\subsection{Alat dan Kerangka Kerja}
+\subsubsection{Kebutuhan Fungsional}
 
-Jelaskan alat, kerangka kerja, atau infrastruktur yang mendukung penelitian Anda.
+Berdasarkan analisis alur kerja, sistem GOPOS memiliki spesifikasi fungsional utama:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Penerimaan Pesan Otomatis:} Sistem harus mampu menerima data pesan (\textit{payload}) dari WhatsApp secara \textit{real-time} melalui metode Webhook.
+    \item \textbf{Identifikasi Maksud (Intent Detection):} Sistem mampu membedakan jenis pesan pengguna, apakah berupa permintaan cek tarif (transaksional) atau pertanyaan umum (konvensional).
+    \item \textbf{Kalkulasi Tarif Dinamis:} Sistem dapat mengekstrak entitas kota asal, kota tujuan, dan berat barang untuk menghitung estimasi biaya pengiriman.
+    \item \textbf{Respon Cerdas Berbasis AI:} Sistem terintegrasi dengan \textit{Large Language Model} (Gemini) untuk menjawab pertanyaan di luar konteks tarif dengan gaya bahasa natural.
+    \item \textbf{Manajemen Riwayat Percakapan:} Sistem menyimpan log percakapan ke dalam basis data untuk menjaga konteks interaksi.
+\end{enumerate}
+
+\subsection{Perancangan Sistem}
+
+Perancangan sistem merupakan cetak biru (\textit{blueprint}) teknis yang menggambarkan bagaimana komponen-komponen aplikasi saling berinteraksi.
+
+\subsubsection{Arsitektur Sistem Global}
+
+GOPOS menerapkan arsitektur \textit{Serverless Microservices}. Diagram berikut mengilustrasikan ekosistem menyeluruh mulai dari sisi pengguna (WhatsApp) hingga pemrosesan di cloud backend.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/Arsitektur Sistem Global.png}
+    \caption{Arsitektur Sistem Global}
+    \label{fig:arsitektur_sistem}
+\end{figure}
+
+\subsubsection{Perancangan Alur Logika (Activity Diagram)}
+
+Diagram alir berikut mendetailkan algoritma pengambilan keputusan (\textit{decision making}) saat sebuah pesan masuk. Sistem menggunakan pendekatan \textit{hybrid}, menggabungkan logika deterministik (untuk hitungan pasti) dan probabilistik (AI).
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/Activity Diagram.png}
+    \caption{Activity Diagram}
+    \label{fig:activity_diagram}
+\end{figure}
+
+\subsubsection{Perancangan Interaksi (Sequence Diagram)}
+
+Diagram sekuensial menggambarkan urutan waktu pertukaran pesan antar objek dalam sistem. Diagram ini menunjukkan bagaimana latensi diminimalisir dengan pemrosesan paralel antara penyimpanan database dan pembuatan respon AI.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{figures/Sequence Diagram.png}
+    \caption{Sequence Diagram}
+    \label{fig:sequence_diagram}
+\end{figure}
+
+\subsubsection{Use Case Diagram}
+
+Menggambarkan interaksi aktor dengan fungsionalitas sistem GOPOS.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/Use Case Diagram.png}
+    \caption{Use Case Diagram}
+    \label{fig:usecase_diagram}
+\end{figure}
+
+\subsubsection{Class Diagram}
+
+Menggambarkan seluruh struktur data yang diimplementasikan pada kode Go.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{figures/Class Diagram.png}
+    \caption{Class Diagram}
+    \label{fig:class_diagram}
+\end{figure}
+
+\subsubsection{Statechart Diagram}
+
+Siklus hidup pesan di dalam server GOPOS.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/Statechart Diagram.png}
+    \caption{Statechart Diagram}
+    \label{fig:statechart_diagram}
+\end{figure}
+
+\subsubsection{Component Diagram}
+
+Hubungan antar komponen arsitektur sistem.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/Component Diagram.png}
+    \caption{Component Diagram}
+    \label{fig:component_diagram}
+\end{figure}
+
+\subsubsection{Perancangan Skema Database (NoSQL)}
+
+Sistem ini menggunakan MongoDB sebagai basis data NoSQL untuk menyimpan data secara fleksibel dalam format dokumen (BSON). Pemilihan NoSQL bertujuan untuk mempermudah penyimpanan riwayat percakapan yang memiliki panjang data tidak tetap. Berdasarkan analisis model data pada backend, koleksi-koleksi utama (\textit{struct}) yang dirancang adalah sebagai berikut:
+
+\textbf{Koleksi Users:}
+Berfungsi menyimpan profil dan kredensial autentikasi pengguna \textit{dashboard}. Field Utama: \texttt{name}, \texttt{email}, \texttt{password} (disimpan dalam bentuk hash), \texttt{role} (admin/user), dan \texttt{status} (active/inactive).
+
+\textbf{Koleksi ChatHistories:}
+Berfungsi menyimpan riwayat interaksi pengguna aplikasi web dengan AI. Struktur: Menggunakan konsep \textit{embedded documents} di mana setiap dokumen menyematkan array \texttt{messages} yang berisi detail pesan (\texttt{message}), balasan AI (\texttt{response}), dan sumber model (\texttt{source}).
+
+\textbf{Koleksi WaChatHistories:}
+Menyimpan konteks percakapan khusus untuk pengguna yang berinteraksi via WhatsApp. Field Utama: \texttt{phone\_number} sebagai pengenal unik dan array \texttt{messages} yang berisi \texttt{role} (user/model) serta \texttt{content} pesan.
+
+\textbf{Koleksi Notes:}
+Berfungsi menyimpan catatan singkat (Notes) yang dikirimkan pengguna melalui bot. Field Utama: \texttt{user\_phone}, \texttt{title}, dan \texttt{content}.
+
+\textbf{Koleksi Profiles:}
+Menyimpan konfigurasi teknis integrasi seperti API Token, Secret, dan URL webhook untuk menghubungkan sistem dengan penyedia layanan WhatsApp.
+
+\subsubsection{Perancangan Antarmuka (User Interface)}
+
+Perancangan antarmuka (UI) GOPOS menitikberatkan pada aspek fungsionalitas dan kemudahan akses melalui berbagai perangkat (responsif). Berdasarkan struktur frontend yang dikembangkan, antarmuka dibagi menjadi tiga halaman utama:
+
+\textbf{Halaman Autentikasi (index.html):}
+Dirancang minimalis dengan fokus pada formulir login. Pengguna memasukkan email dan kata sandi untuk diverifikasi oleh backend sebelum mendapatkan token sesi.
+
+\textbf{Halaman Dashboard Utama (dashboard.html):}
+Berfungsi sebagai pusat kendali pengguna setelah berhasil masuk. Menampilkan informasi profil pengguna dan ringkasan aktivitas. Sesuai ralat sistem, manajemen profil dan hak akses kini diintegrasikan langsung pada tampilan \textit{dashboard} ini untuk menyederhanakan navigasi.
+
+\textbf{Halaman Chat AI (chat.html):}
+Merupakan antarmuka interaksi utama asisten virtual. Komponen:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Panel Samping (Sidebar):} Menampilkan daftar riwayat percakapan sebelumnya yang diambil dari koleksi \texttt{chathistories}.
+    \item \textbf{Jendela Chat:} Menampilkan gelembung pesan (\textit{chat bubbles}) secara berurutan sesuai alur waktu percakapan.
+    \item \textbf{Input Area:} Kolom teks di bagian bawah untuk mengirimkan pertanyaan baru kepada model Gemini AI.
+\end{itemize}

@@ -1,6 +1,6 @@
-% Template LaTeX untuk Ujian Kualifikasi
-% Program Studi Doktor Informatika
-% Universitas Telkom
+% Template LaTeX untuk Laporan Proyek III
+% Program Studi DIV Teknik Informatika
+% Universitas Logistik dan Bisnis Internasional
 
 % Document Class
 \documentclass[12pt,a4paper]{article}
@@ -104,41 +104,53 @@
 % Redefine title
 \makeatletter
 % Initialize default values
-\def\@myTitle{Judul Penelitian}
-\def\@myNIM{303012510004}
-\def\@myName{Rolly Maulana Awangga}
-\def\@myYear{Tahun}
+\def\@myTitle{Pengembangan GoPos (Go-Lang Pos Assistant) Sebagai Chatbot Cerdas Berbasis Gemini AI Pada PT Pos Indonesia}
+\def\@myNIM{714230021}
+\def\@myName{Muhammad Haitsam Izzuddin Azman}
+\def\@myYear{2025}
 
 \renewcommand{\maketitle}{
     \begin{titlepage}
         \centering
         \vspace*{0.5cm}
         
-        % Judul Penelitian (bagian atas)
+        % Header
+        {\fontsize{14}{17}\selectfont
+        \textbf{LAPORAN PROYEK III}\par}
+        
+        \vspace{1cm}
+        
+        % Judul Penelitian
         {\fontsize{16}{20}\selectfont
-        \textbf{Judul Laporan yang Akan di Laporkan}\par}
+        \textbf{PENGEMBANGAN GOPOS (GO-LANG POS ASSISTANT) SEBAGAI CHATBOT CERDAS BERBASIS GEMINI AI PADA PT POS INDONESIA}\par}
         
-        \vspace{1.5cm}
+        \vspace{1cm}
         
-        % Tahap Ujian Kualifikasi
+        % Keterangan
         {\fontsize{12}{14}\selectfont
-        \textbf{Proyek / Internship}\par}
+        Diajukan untuk Memenuhi Kelulusan Matakuliah Proyek III\par
+        pada Program Studi DIV Teknik Informatika\par}
         
-        \vspace{1.5cm}
+        \vspace{1cm}
         
-        % NIM dan Nama
+        % Pembimbing
         {\fontsize{12}{14}\selectfont
-        \textbf{\@myNIM}\par
-        \textbf{\@myName}\par}
+        \textbf{Pembimbing:}\par
+        Rolly Maulana Awangga, S.T., MT., CAIP, SFPC.\par
+        NIK. 117.86.219\par}
+        
+        \vspace{1cm}
+        
+        % Penyusun
+        {\fontsize{12}{14}\selectfont
+        \textbf{Disusun oleh:}\par
+        \@myName\space(\@myNIM)\par}
         
         \vspace{1.5cm}
-        \vspace{1.5cm}
-        \vspace{1.5cm}
-     
         
         % Logo
         \IfFileExists{logo.png}{
-            \includegraphics[width=0.5\textwidth]{logo.png}
+            \includegraphics[width=0.4\textwidth]{logo.png}
         }{
             {\fontsize{16}{19}\bfseries Logo\par}
         }
@@ -146,12 +158,11 @@
         \vfill
         
         % Program Studi dan Informasi
-        {\fontsize{16}{19}\selectfont
-        \textbf{Program Studi Sarjana Terapan Teknik Informatika}\par
-        \textbf{Sekolah Teknologi Informasi}\par
-        \textbf{Universitas Logistik dan Bisnis Internasional}\par
-        \textbf{Bandung}\par
-        \textbf{2026}\par}
+        {\fontsize{14}{17}\selectfont
+        \textbf{PROGRAM STUDI DIV TEKNIK INFORMATIKA}\par
+        \textbf{UNIVERSITAS LOGISTIK \& BISNIS INTERNASIONAL}\par
+        \textbf{BANDUNG}\par
+        \textbf{\@myYear}\par}
         
     \end{titlepage}
     \newpage
@@ -232,10 +243,10 @@
 
 
 % Set document metadata
-\myTitle{Judul Penelitian Anda}
-\myNIM{303012510004}
-\myName{Rolly Maulana Awangga}
-\myYear{2026}
+\myTitle{Pengembangan GoPos (Go-Lang Pos Assistant) Sebagai Chatbot Cerdas Berbasis Gemini AI Pada PT Pos Indonesia}
+\myNIM{714230021}
+\myName{Muhammad Haitsam Izzuddin Azman}
+\myYear{2025}
 
 % Beginning of Document
 \begin{document}
@@ -272,17 +283,11 @@
 \listoffigures
 \clearpage
 
-% DAFTAR RUMUS
-\phantomsection
-\addcontentsline{toc}{section}{DAFTAR RUMUS}
-\listofequations
+% ABSTRAK
 \clearpage
-
-% RINGKASAN
-\clearpage
-\section*{RINGKASAN}
+\section*{ABSTRAK}
 \phantomsection
-\addcontentsline{toc}{section}{RINGKASAN}
+\addcontentsline{toc}{section}{ABSTRAK}
 \input{chapters/ringkasan}
 
 \clearpage
@@ -291,32 +296,52 @@
 \setcounter{section}{0}
 \pagenumbering{arabic} % Kembali ke angka Arab mulai dari Bab 1
 \setcounter{page}{1}   % Reset halaman ke 1
-\section*{BAB 1 \\ PENDAHULUAN}
+\section*{BAB I \\ PENDAHULUAN}
 \phantomsection
-\addcontentsline{toc}{section}{BAB 1 PENDAHULUAN}
+\addcontentsline{toc}{section}{BAB I PENDAHULUAN}
 \refstepcounter{section}
 
 \input{chapters/bab1}
 
 \clearpage
 
-% BAB 2 - LITERATURE REVIEW
-\section*{BAB 2 \\ LITERATURE REVIEW}
+% BAB 2 - LANDASAN TEORI
+\section*{BAB II \\ LANDASAN TEORI}
 \phantomsection
-\addcontentsline{toc}{section}{BAB 2 LITERATURE REVIEW}
+\addcontentsline{toc}{section}{BAB II LANDASAN TEORI}
 \refstepcounter{section}
 
 \input{chapters/bab2}
 
 \clearpage
 
-% BAB 3 - TEORI / METODE TERKAIT
-\section*{BAB 3 \\ TEORI / METODE TERKAIT}
+% BAB 3 - METODOLOGI PENELITIAN
+\section*{BAB III \\ METODOLOGI PENELITIAN}
 \phantomsection
-\addcontentsline{toc}{section}{BAB 3 TEORI / METODE TERKAIT}
+\addcontentsline{toc}{section}{BAB III METODOLOGI PENELITIAN}
 \refstepcounter{section}
 
 \input{chapters/bab3}
+
+\clearpage
+
+% BAB 4 - HASIL DAN PEMBAHASAN
+\section*{BAB IV \\ HASIL DAN PEMBAHASAN}
+\phantomsection
+\addcontentsline{toc}{section}{BAB IV HASIL DAN PEMBAHASAN}
+\refstepcounter{section}
+
+\input{chapters/bab4}
+
+\clearpage
+
+% BAB 5 - PENUTUP
+\section*{BAB V \\ PENUTUP}
+\phantomsection
+\addcontentsline{toc}{section}{BAB V PENUTUP}
+\refstepcounter{section}
+
+\input{chapters/bab5}
 
 % DAFTAR PUSTAKA
 \clearpage

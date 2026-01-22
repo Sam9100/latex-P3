@@ -1,31 +1,63 @@
-\subsection{Latar Belakang dan Motivasi Penelitian}
+% BAB I - PENDAHULUAN
 
-\begin{background}
-Pada bagian ini, jelaskan \textit{rationale} atau motivasi yang melatarbelakangi pemilihan topik penelitian. Bagian ini dapat menjelaskan tren penelitian atau berdasarkan referensi dari topik yang menjadi minat Anda \parencite{example2023}. Sertakan juga rujukan dari referensi yang menjadi acuan latar belakang penelitian Anda \parencite{textbook2020}.
+\subsection{Latar Belakang}
 
-\textbf{Isi:} 100-200 kata, minimal 1 paragraf.
-\end{background}
+Sektor logistik dan pengiriman merupakan bagian vital dalam mendukung pertumbuhan ekonomi dan konektivitas masyarakat di era digital. Sebagai salah satu penyedia layanan logistik terbesar di Indonesia, PT Pos Indonesia terus berupaya melakukan transformasi digital untuk meningkatkan kualitas layanan pelanggan. Namun, saat ini masyarakat seringkali menghadapi tantangan dalam mengakses informasi layanan secara cepat, seperti pencarian estimasi ongkos kirim (ongkir) atau pencarian lokasi kantor pos yang mengharuskan navigasi manual melalui situs web yang terkadang dinilai kurang praktis bagi pengguna perangkat seluler.
 
-\subsection{Ringkasan Penelitian Terkait}
+Di sisi lain, perkembangan teknologi \textit{Generative AI} membuka peluang untuk menciptakan interaksi yang lebih personal dan responsif melalui antarmuka percakapan (\textit{chatbot}). Penggunaan aplikasi pesan instan seperti WhatsApp sebagai platform utama komunikasi masyarakat dapat dimanfaatkan sebagai gerbang akses layanan informasi yang tersedia 24/7 tanpa terkendala jam operasional kantor fisik.
 
-\begin{literaturereview}
-Bagian ini berisi \textit{brief literature review}. Jelaskan penelitian-penelitian terkait hasil telaah terhadap penelitian sebelumnya yang paling mendekati dengan topik atau latar belakang penelitian Anda \parencite{conference2022}. Jelaskan juga keunggulan dan kekurangan dari penelitian sebelumnya, serta peluang penelitian lanjutan. Sertakan sitasi dari referensi utama.
+Untuk mengatasi permasalahan tersebut, dibutuhkan sebuah platform asisten virtual cerdas yang mampu memahami bahasa alami pengguna dan memberikan informasi layanan pos secara instan. Dalam proyek ini, dikembangkan sebuah sistem asisten virtual bernama ``GOPOS'' (\textit{Go-Lang Pos Assistant}). Sistem ini dirancang dengan arsitektur teknologi modern yang menggabungkan performa tinggi dan kecerdasan buatan, antara lain:
 
-\textbf{Isi:} 100-200 kata, minimal 2-3 paragraf.
-\end{literaturereview}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Golang (Go)} sebagai backend utama yang berjalan di lingkungan \textit{Serverless} Google Cloud Functions, dipilih karena efisiensinya dalam menangani webhook dan permintaan API secara cepat.
+    \item \textbf{Gemini AI} sebagai mesin kecerdasan buatan yang memungkinkan sistem memahami maksud pertanyaan pengguna (NLP) secara luwes, sehingga interaksi tidak terasa kaku.
+    \item \textbf{WhatsApp Gateway} sebagai antarmuka pengguna, memungkinkan akses layanan melalui aplikasi pesan yang sudah familiar bagi masyarakat.
+    \item \textbf{MongoDB} sebagai basis data NoSQL untuk menyimpan sesi percakapan dan log aktivitas secara fleksibel.
+\end{itemize}
 
-\subsection{Potensi Gap Penelitian atau Masalah yang Akan Diangkat}
+Fitur unggulan dari GOPOS adalah kemampuannya dalam memberikan estimasi tarif pengiriman secara otomatis melalui logika dinamis pada backend serta menjawab berbagai pertanyaan umum seputar layanan pos melalui integrasi Gemini AI. Proyek ini bertujuan untuk mengintegrasikan teknologi cloud, kecerdasan buatan, dan layanan pesan instan dalam satu ekosistem asisten virtual yang utuh.
 
-\begin{researchgap}
-Pada bagian ini, tuliskan identifikasi permasalahan atau potensi gap dari fenomena yang akan diangkat dalam penelitian berdasarkan latar belakang dan penelitian terkait. Jelaskan kesenjangan yang belum teratasi oleh penelitian sebelumnya dan bagaimana penelitian Anda akan mengatasinya.
+\subsection{Rumusan Masalah}
 
-\textbf{Isi:} 100-200 kata, minimal 1 paragraf.
-\end{researchgap}
+Berdasarkan latar belakang di atas, maka rumusan masalah dalam proyek ini adalah:
 
-\subsection{Potensi Kebaruan dari Penelitian yang Akan Dilakukan}
+\begin{enumerate}[leftmargin=*]
+    \item Bagaimana merancang dan membangun asisten virtual GOPOS berbasis \textit{chatbot} WhatsApp yang responsif menggunakan bahasa pemrograman Golang?
+    \item Bagaimana mengimplementasikan kecerdasan buatan menggunakan Gemini AI untuk menangani pertanyaan pengguna terkait layanan logistik secara natural?
+    \item Bagaimana melakukan integrasi sistem antara layanan backend Golang pada Google Cloud Platform, basis data MongoDB, dan WhatsApp Gateway?
+\end{enumerate}
 
-\begin{novelty}
-Pada bagian ini, tuliskan bagaimana Anda membuktikan bahwa penelitian yang diajukan adalah baru dan orisinal (\textit{novel dan original}). Bagian ini dapat diisi dengan hasil \textit{systematic mapping study} atau \textit{meta analysis} untuk memetakan usulan topik penelitian terhadap teori atau metode terkini, sehingga dapat dibuktikan \textit{novelty} dan \textit{originality}-nya.
+\subsection{Tujuan}
 
-\textbf{Isi:} 400-500 kata, minimal 3-5 paragraf.
-\end{novelty}
+Tujuan dari pelaksanaan proyek ini adalah:
+
+\begin{enumerate}[leftmargin=*]
+    \item Mengembangkan asisten virtual GOPOS sebagai platform informasi layanan Pos Indonesia yang \textit{user-friendly} melalui media WhatsApp.
+    \item Membangun fitur cek ongkir otomatis dan tanya jawab cerdas menggunakan Gemini AI untuk membantu pengguna menemukan informasi secara cepat.
+    \item Mengimplementasikan integrasi teknologi Golang, MongoDB, dan infrastruktur cloud untuk mendukung skalabilitas dan ketersediaan layanan.
+\end{enumerate}
+
+\subsection{Ruang Lingkup}
+
+Ruang lingkup dalam pengembangan sistem ini meliputi:
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Fokus Pengembangan:} Asisten virtual berbasis teks (WhatsApp) dengan dukungan kecerdasan buatan untuk layanan logistik.
+    \item \textbf{Layanan Backend:} Menggunakan bahasa pemrograman Golang yang di-\textit{deploy} melalui Google Cloud Functions.
+    \item \textbf{Kecerdasan Buatan:} Pemanfaatan Gemini AI untuk pemrosesan bahasa alami (NLP) pada percakapan umum.
+    \item \textbf{Pengelolaan Data:} Penyimpanan data sesi dan konfigurasi sistem dilakukan menggunakan basis data NoSQL MongoDB.
+    \item \textbf{Fitur Utama:} Mencakup pengecekan estimasi ongkos kirim domestik, pencarian informasi layanan, dan interaksi percakapan natural.
+    \item \textbf{Pengguna:} Target pengguna adalah masyarakat umum yang memerlukan informasi layanan PT Pos Indonesia secara instan.
+\end{itemize}
+
+\subsection{Sistematika Penulisan}
+
+Laporan penelitian ini terdiri dari beberapa bab dengan sistematika sebagai berikut:
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{BAB I Pendahuluan:} Menguraikan latar belakang, rumusan masalah, tujuan penelitian, ruang lingkup dan sistematika penulisan.
+    \item \textbf{BAB II Landasan Teori:} Membahas teori penunjang seperti konsep \textit{Serverless Architecture}, Golang, \textit{Generative AI} (Gemini), MongoDB, dan WhatsApp Gateway.
+    \item \textbf{BAB III Metodologi Penelitian:} Menjelaskan metodologi pengembangan (Agile), analisis kebutuhan sistem, perancangan arsitektur cloud, dan perancangan alur percakapan \textit{chatbot}.
+    \item \textbf{BAB IV Hasil dan Pembahasan:} Menampilkan hasil implementasi kode program, integrasi API, serta analisis terhadap performa \textit{chatbot} dalam merespons pengguna.
+    \item \textbf{BAB V Penutup:} Berisi kesimpulan dari pengembangan asisten virtual GOPOS serta saran untuk pengembangan fitur lebih lanjut.
+\end{itemize}

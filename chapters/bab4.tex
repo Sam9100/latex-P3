@@ -1,0 +1,90 @@
+% BAB IV - HASIL DAN PEMBAHASAN
+
+\subsection{Pembahasan Hasil Implementasi}
+
+Implementasi sistem ``GOPOS (\textit{Go-Lang POS Assistant})'' sebagai \textit{chatbot} cerdas telah berhasil memenuhi kebutuhan pengguna dalam mengakses informasi layanan Pos Indonesia secara efektif dan efisien. Dengan fitur utama seperti asisten virtual berbasis AI serta fitur cek tarif pengiriman (Cek Ongkir), sistem ini mampu berjalan sesuai dengan perancangan yang telah ditetapkan. Pengguna dapat berinteraksi dengan sistem secara optimal melalui antarmuka web yang responsif serta mudah dipahami.
+
+Melengkapi fungsionalitas utama tersebut, pengembangan sistem juga mencakup implementasi integrasi WhatsApp Gateway dan manajemen catatan (Notes). Berdasarkan hasil pengujian, integrasi menggunakan metode Webhook terbukti stabil dalam memproses data pesan secara \textit{real-time}, sementara penggunaan model Gemini Pro API memberikan nilai tambah signifikan dengan menyajikan jawaban yang natural dan kontekstual terhadap berbagai pertanyaan pengguna di luar layanan transaksional.
+
+\subsection{Tampilan Antarmuka}
+
+Perancangan antarmuka pengguna pada sistem GOPOS mengedepankan prinsip desain yang bersih, intuitif, dan responsif guna memastikan kenyamanan interaksi baik melalui perangkat desktop maupun seluler. Implementasi antarmuka ini dibagi menjadi beberapa bagian utama yang mewakili alur kerja pengguna dalam sistem.
+
+\subsubsection{Halaman Beranda dan Autentikasi (index.html)}
+
+Halaman beranda atau \texttt{index.html} berfungsi sebagai pusat informasi publik dan pintu masuk utama ke dalam ekosistem GOPOS. Halaman ini memiliki desain visual yang dinamis dengan animasi latar belakang, dan memiliki bagian \textit{Hero Section} yang menunjukkan nilai utama aplikasi sebagai asisten bertenaga AI. Bagian informasi di halaman ini mencakup statistik penggunaan \textit{real-time}, daftar fitur unggulan, seperti cek ongkir cepat, dan penjelajah. Seluruh skema warna dan elemen tombol telah dioptimalkan untuk memudahkan navigasi pengguna sebelum masuk ke fitur inti, memungkinkan pengguna berinteraksi dengan modal autentikasi yang terintegrasi secara elegan untuk melakukan proses login dan registrasi akun baru.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/Tampilan index.html.png}
+    \caption{Tampilan index.html}
+    \label{fig:tampilan_index}
+\end{figure}
+
+\subsubsection{Halaman Dashboard Admin (dashboard.html)}
+
+Halaman \textit{dashboard} admin (\texttt{dashboard.html}) dibuat sebagai pusat manajemen data pengguna yang efektif dengan tata letak yang terorganisir untuk administrator sistem. Tampilan utama halaman terdiri dari panel kontrol yang menampilkan metrik statistik penting seperti jumlah pengguna total, pengguna aktif, dan status koneksi sistem, yang ditampilkan dalam bentuk kartu statistik kontemporer. Bagian utama halaman terdiri dari tabel data pengguna yang berfungsi, dilengkapi dengan fitur tambahan seperti daftar pengguna aktif. Dengan antarmuka yang bersih, administrator dapat secara langsung memantau status akun dan melakukan tugas administratif. Ini memastikan bahwa pengelolaan hak akses dan manajemen pengguna tetap tepat dan jelas.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/Tampilan dashboard.html.png}
+    \caption{Tampilan dashboard.html}
+    \label{fig:tampilan_dashboard}
+\end{figure}
+
+\subsubsection{Halaman Antarmuka Chat AI (chat.html)}
+
+Halaman antarmuka chat AI (\texttt{chat.html}) adalah tempat utama di mana pengguna web dapat berinteraksi secara langsung dengan asisten virtual GOPOS. Halaman ini memiliki struktur yang sangat fungsional, dengan panel riwayat percakapan di sisi kiri yang memungkinkan pengguna untuk beralih secara instan di antara sesi percakapan terdahulu. Di bagian tengah, jendela percakapan menyajikan pesan dalam bentuk gelembung chat yang dinamis. Layar selamat datang, juga disebut sebagai layar selamat datang, didukung oleh kartu saran pertanyaan otomatis yang membantu pengguna baru memulai percakapan. Integrasi API Gemini memastikan bahwa setiap teks yang dimasukkan ke dalam kolom pesan di bagian bawah akan menerima balasan cerdas dalam hitungan detik. Ini juga dilengkapi dengan indikator pengetikan, yang memberikan kesan interaksi yang lebih hidup dan responsif bagi pengguna.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/Tampilan chat.html.png}
+    \caption{Tampilan chat.html}
+    \label{fig:tampilan_chat}
+\end{figure}
+
+\subsection{Pengujian (White Box)}
+
+Pengujian \textit{White Box} dilakukan untuk memastikan struktur dan logika kode program di dalamnya. Pengujian ini mengukur cakupan kode pada sisi backend, yang dibangun menggunakan bahasa pemrograman Golang. Tujuannya adalah untuk memastikan bahwa setiap fungsi kontroler telah dioperasikan dan diuji menggunakan skenario uji unit.
+
+Berikut adalah hasil pengujian \textit{Code Coverage} untuk modul Controllers:
+
+\begin{table}[htbp]
+    \caption{Hasil Code Coverage}
+    \label{tab:code_coverage}
+    \centering
+    \small
+    \begin{tabular}{@{} c l c c @{}}
+    \toprule
+    \textbf{No} & \textbf{Modul Controller} & \textbf{Coverage (\%)} & \textbf{Test Functions} \\
+    \midrule
+    1 & Chatbot Controller & 93.2 & 20 \\
+    2 & Auth Controller & 69.1 & 24 \\
+    3 & Chat History Controller & 58.5 & 13 \\
+    4 & User Management Controller & 29.1 & 22 \\
+    5 & WhatsAuth Controller & 27.3 & 18 \\
+    \midrule
+    \multicolumn{2}{c}{\textbf{Rata-rata}} & \textbf{55.4} & \textbf{97 (Total)} \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsubsection{Analisis Hasil Pengujian}
+
+Berdasarkan tabel di atas, persentase cakupan kode pada modul-modul inti seperti \textit{Chatbot} dan \textit{Authentication} menunjukkan hasil yang sangat memuaskan, dengan nilai mencapai lebih dari 60\%. Angka ini mengindikasikan bahwa alur bisnis utama pada kedua modul tersebut telah melalui pengujian yang komprehensif.
+
+Beberapa catatan penting dari hasil pengujian ini adalah:
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Chatbot Controller (93.2\%):} Persentase cakupan sangat optimal disebabkan modul \textit{chatbot} memiliki sejumlah besar fungsi utilitas yang dapat diuji secara independen tanpa ketergantungan eksternal, meliputi ekstraksi data ongkir (asal, tujuan, berat), formatting numerik untuk display harga, klasifikasi zona pengiriman internasional, serta berbagai validasi input pengguna. Terdapat 20 \textit{test functions} yang mencakup \textit{helper functions}, \textit{edge cases}, dan skenario integrasi.
+    
+    \item \textbf{Auth Controller (69.1\%):} Tingkat cakupan tergolong baik untuk aspek validasi masukan dan penanganan kesalahan. Limitasi terdapat pada alur sukses (registrasi dan login berhasil) yang membutuhkan koneksi aktif ke database MongoDB guna melakukan operasi create/read user serta pembangkitan token autentikasi JWT. Modul ini diuji dengan 24 \textit{test functions} yang mencakup validasi input, \textit{error handling}, dan berbagai \textit{edge cases}.
+    
+    \item \textbf{Chat History Controller (58.5\%):} Cakupan meliputi validasi konten pesan, handling untuk JSON yang tidak valid, serta pemeriksaan authorization header. Bagian yang belum tercakup adalah proses penyimpanan dan pengambilan riwayat percakapan dari database MongoDB yang memerlukan koneksi database aktif. Terdapat 13 \textit{test functions} yang fokus pada validasi message dan auth scenarios.
+    
+    \item \textbf{User Management Controller (29.1\%):} Persentase berada di kategori cukup mengingat fungsionalitas CRUD manajemen pengguna memiliki dependensi tinggi terhadap operasi database, seperti validasi email duplicate, pencarian user berdasarkan ID MongoDB ObjectID, dan verifikasi role admin yang mengharuskan query ke database. Diuji dengan 22 \textit{test functions} mencakup auth validation dan input handling.
+    
+    \item \textbf{WhatsAuth Controller (27.3\%):} Cakupan relatif moderat karena fungsi webhook WhatsApp (\texttt{PostInboxNomor}) memiliki ketergantungan kuat pada berbagai layanan eksternal seperti Gemini AI API untuk generate respons, Fonnte WhatsApp API untuk pengiriman pesan, dan Kimseok webhook sebagai fallback, sehingga sebagian besar pengujian unit harus menggunakan \textit{mock object} atau melewatkan integrasi tersebut. Terdapat 18 \textit{test functions} untuk message format validation dan \textit{edge cases}.
+\end{itemize}
+
+Secara keseluruhan, arsitektur backend telah melalui validasi yang memadai pada mayoritas modul fungsional, ditunjukkan dengan rata-rata coverage 59.2\% yang diperoleh dari total 97 \textit{test functions} dengan tingkat keberhasilan 100\%.

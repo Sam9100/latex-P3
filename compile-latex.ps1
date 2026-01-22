@@ -5,6 +5,18 @@
 # Set nama file (tanpa ekstensi)
 $TexFile = "bukped"
 
+# MiKTeX bin path - update jika lokasi instalasi berbeda
+$MiKTeXBin = "$env:LOCALAPPDATA\Programs\MiKTeX\miktex\bin\x64"
+$pdflatex = "$MiKTeXBin\pdflatex.exe"
+$bibtex = "$MiKTeXBin\bibtex.exe"
+
+# Cek apakah pdflatex ada
+if (-not (Test-Path $pdflatex)) {
+    Write-Host "ERROR: pdflatex tidak ditemukan di: $pdflatex" -ForegroundColor Red
+    Write-Host "Pastikan MiKTeX sudah terinstall dengan benar." -ForegroundColor Yellow
+    exit 1
+}
+
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host "  Kompilasi LaTeX Document" -ForegroundColor Cyan
 Write-Host "  File: $TexFile.tex" -ForegroundColor Cyan
@@ -13,7 +25,7 @@ Write-Host ""
 
 # Kompilasi pertama
 Write-Host "[1/4] Menjalankan pdflatex (kompilasi pertama)..." -ForegroundColor Yellow
-pdflatex -interaction=nonstopmode "$TexFile.tex" | Out-Null
+& $pdflatex -interaction=nonstopmode "$TexFile.tex" | Out-Null
 if ($LASTEXITCODE -eq 0) {
     Write-Host "      OK Berhasil" -ForegroundColor Green
 }
@@ -23,7 +35,7 @@ else {
 
 # Menjalankan BibTeX
 Write-Host "[2/4] Menjalankan bibtex..." -ForegroundColor Yellow
-bibtex "$TexFile" | Out-Null
+& $bibtex "$TexFile" | Out-Null
 if ($LASTEXITCODE -eq 0) {
     Write-Host "      OK Berhasil" -ForegroundColor Green
 }
@@ -33,7 +45,7 @@ else {
 
 # Kompilasi kedua
 Write-Host "[3/4] Menjalankan pdflatex (kompilasi kedua)..." -ForegroundColor Yellow
-pdflatex -interaction=nonstopmode "$TexFile.tex" | Out-Null
+& $pdflatex -interaction=nonstopmode "$TexFile.tex" | Out-Null
 if ($LASTEXITCODE -eq 0) {
     Write-Host "      OK Berhasil" -ForegroundColor Green
 }
@@ -43,7 +55,7 @@ else {
 
 # Kompilasi ketiga (final)
 Write-Host "[4/4] Menjalankan pdflatex (kompilasi ketiga)..." -ForegroundColor Yellow
-pdflatex -interaction=nonstopmode "$TexFile.tex" | Out-Null
+& $pdflatex -interaction=nonstopmode "$TexFile.tex" | Out-Null
 if ($LASTEXITCODE -eq 0) {
     Write-Host "      OK Berhasil" -ForegroundColor Green
 }

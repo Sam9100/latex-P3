@@ -1,21 +1,67 @@
 % Lampiran
-% Tambahkan konten lampiran di sini jika diperlukan
 
-% Contoh:
-% \section*{LAMPIRAN A}
-% \addcontentsline{toc}{section}{LAMPIRAN A}
-% Konten lampiran A...
 \section*{LAMPIRAN}
 \phantomsection
 \addcontentsline{toc}{section}{LAMPIRAN}
 
-\subsection*{Bibliometrik}
+\subsection*{Lampiran A: Code Coverage}
 \phantomsection
-\addcontentsline{toc}{subsection}{Bibliometrik}
+\addcontentsline{toc}{subsection}{Lampiran A: Code Coverage}
 
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=1.0\textwidth]{figures/bibliometric-overview.png}
-    \caption{Visualisasi Overview Bibliometrik (Biblioshiny)}
-    \label{fig:bibliometrik_overview}
-\end{figure}
+Berikut adalah detail \textit{code coverage} untuk setiap modul controller pada sistem GOPOS:
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{auth.go} - 69.1\%
+    \item \textbf{chat\_history.go} - 58.5\%
+    \item \textbf{chatbot.go} - 93.2\%
+    \item \textbf{user\_management.go} - 29.1\%
+    \item \textbf{whatsauth.go} - 27.3\%
+\end{itemize}
+
+\clearpage
+
+\section*{GLOSARIUM}
+\phantomsection
+\addcontentsline{toc}{section}{GLOSARIUM}
+
+\subsection*{Istilah Teknis}
+\phantomsection
+\addcontentsline{toc}{subsection}{Istilah Teknis}
+
+\begin{description}[leftmargin=!,labelwidth=4cm]
+    \item[Agile (Scrum)] Metodologi pengembangan perangkat lunak yang bersifat iteratif (berulang) dan kolaboratif untuk merespons perubahan dengan cepat.
+    
+    \item[API] \textit{Application Programming Interface}, antarmuka yang memungkinkan dua aplikasi atau lebih untuk saling berkomunikasi dan bertukar data.
+    
+    \item[BSON] \textit{Binary JSON}, format penyimpanan data berbasis dokumen yang digunakan oleh MongoDB, mendukung efisiensi ruang dan kecepatan.
+    
+    \item[Chatbot] Program komputer yang dirancang untuk mensimulasikan percakapan dengan pengguna manusia, terutama melalui internet.
+    
+    \item[Code Coverage] Metrik untuk mengukur sejauh mana kode sumber program telah dijalankan selama pengujian unit.
+    
+    \item[Gemini AI] Model bahasa besar (\textit{Large Language Model}) mutakhir dari Google yang mampu memahami dan menghasilkan teks secara natural.
+    
+    \item[Golang (Go)] Bahasa pemrograman kompilasi yang dikembangkan Google, dikenal karena efisiensi memori dan dukungan konkurensi.
+    
+    \item[MongoDB] Basis data NoSQL berbasis dokumen yang menyimpan data dalam format fleksibel seperti JSON/BSON.
+    
+    \item[NLP] \textit{Natural Language Processing}, cabang kecerdasan buatan yang fokus pada interaksi antara komputer dan bahasa manusia agar mesin dapat memahami konteks bicara.
+    
+    \item[Serverless] Model komputasi di mana pengembang dapat menjalankan kode tanpa harus mengelola infrastruktur server fisik secara manual.
+    
+    \item[Webhook] Metode komunikasi otomatis di mana satu sistem mengirimkan data ke sistem lain segera setelah suatu peristiwa terjadi.
+    
+    \item[White Box Testing] Metode pengujian perangkat lunak di mana penguji mengetahui dan menguji struktur internal atau alur kode program.
+\end{description}
+
+\subsection*{Istilah Non-Teknis}
+\phantomsection
+\addcontentsline{toc}{subsection}{Istilah Non-Teknis}
+
+\begin{description}[leftmargin=!,labelwidth=4cm]
+    \item[Real-time] Kondisi di mana sistem merespons perintah pengguna secara langsung dan seketika tanpa penundaan waktu yang lama.
+    
+    \item[User Interface] Tata letak visual dari aplikasi yang memungkinkan pengguna untuk berinteraksi dengan sistem.
+    
+    \item[Scalability] Kemampuan sistem untuk menangani beban kerja yang meningkat dengan menambah sumber daya secara otomatis.
+\end{description}

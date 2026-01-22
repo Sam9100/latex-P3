@@ -1,11 +1,23 @@
 \begin{summary}
-Silakan tuliskan ringkasan berisi 200 kata sampai 300 kata dalam satu paragraf, yang menjelaskan latar belakang penelitian secara umum, tujuan, metode yang akan diusulkan atau akan digunakan, rencana kontribusi dari penelitian Anda.
+Dalam era transformasi digital saat ini, pelanggan, terutama mereka yang bekerja di bidang logistik dan pengiriman, sangat membutuhkan akses data yang cepat dan mudah. Namun, keterbatasan layanan pelanggan konvensional, seperti \textit{call center} atau loket fisik, seringkali menyebabkan masalah untuk mendapatkan informasi di luar jam kerja. Pelanggan mungkin kesulitan mendapatkan estimasi biaya kirim atau tahu di mana kantor pos terdekat. Selain itu, orang percaya bahwa mencari informasi secara manual melalui website dinilai kurang praktis untuk pengguna perangkat ponsel. Mengembangkan ``GOPOS'', sebuah asisten virtual cerdas (\textit{chatbot}) berbasis WhatsApp, adalah tujuan proyek untuk mengatasi masalah ini.
 
-Paragraf ringkasan harus mencakup:
-\begin{itemize}[leftmargin=*]
-    \item Konteks dan latar belakang penelitian
-    \item Tujuan utama penelitian
-    \item Metodologi yang diusulkan
-    \item Kontribusi yang diharapkan dari penelitian
-\end{itemize}
+Arsitektur teknologi \textit{serverless} Google Cloud Platform (GCP) digunakan untuk mengembangkan sistem ini. Karena kecepatan kompetitif dan kemampuan menangani webhook yang luar biasa, bahasa pemrograman Golang digunakan untuk membangun logika backend. Sistem menggunakan basis data NoSQL MongoDB untuk memberikan fleksibilitas dalam penyimpanan data sesi percakapan. Salah satu fitur unggulan aplikasi ini adalah model bahasa besar Gemini AI, yang memungkinkan \textit{chatbot} memahami bahasa alami pengguna dengan mudah daripada bot biasa. \textit{Chatbot} ini menjawab pertanyaan umum tentang layanan Pos Indonesia dan mengestimasikan tarif pengiriman secara dinamis.
+
+Metodologi Agile digunakan dalam pengembangan perangkat lunak, yang memungkinkan penyesuaian berulang untuk logika bisnis dan respons AI. Untuk memastikan bahwa respons \textit{chatbot} sesuai dengan pertanyaan, metode \textit{White Box Testing} digunakan untuk menguji sistem. Hasil implementasi menunjukkan bahwa GOPOS dapat menawarkan layanan pelanggan yang responsif, akurat, dan tersedia 24/7 melalui integrasi kecerdasan buatan dengan layanan pesan instan WhatsApp.
+
+\textbf{Kata Kunci:} \textit{Chatbot}, WhatsApp Gateway, Gemini AI, Golang, \textit{Serverless}, Google Cloud Platform, MongoDB.
 \end{summary}
+
+\clearpage
+
+\section*{ABSTRACT}
+\phantomsection
+\addcontentsline{toc}{section}{ABSTRACT}
+
+In today's era of digital transformation, customers, especially those working in logistics and shipping, desperately need fast and easy access to data. However, the limitations of conventional customer services, such as call centers or physical counters, often cause problems when trying to obtain information outside of business hours. Customers may find it difficult to get shipping cost estimates or find out where the nearest post office is. Additionally, people believe that manually searching for information through websites is impractical for mobile phones. Developing ``GOPOS,'' an intelligent virtual assistant (chatbot) based on WhatsApp, is the project's goal to address these issues.
+
+The Google Cloud Platform (GCP) serverless technology architecture was used to develop this system. Due to its competitive speed and exceptional webhook handling capabilities, the Golang programming language was used to build the backend logic. The system uses the NoSQL MongoDB database to provide flexibility in storing conversation session data. One of the standout features of this application is the Gemini AI large language model, which enables the chatbot to understand users' natural language more easily than regular bots. This chatbot answers general questions about Pos Indonesia's services and dynamically estimates shipping rates.
+
+The Agile methodology is used in software development, which allows for iterative adjustments to business logic and AI responses. To ensure that chatbot responses are appropriate to questions, the White Box Testing method is used to test the system. The results of the implementation show that GOPOS can offer responsive, accurate, and 24/7 customer service through the integration of artificial intelligence with the WhatsApp instant messaging service.
+
+\textbf{Keywords:} Chatbot, WhatsApp Gateway, Gemini AI, Golang, Serverless, Google Cloud Platform, MongoDB.
