@@ -2,10 +2,28 @@
 
 \subsection{Kesimpulan}
 
-Berdasarkan seluruh rangkaian tahapan pengembangan sistem yang dimulai dari analisis kebutuhan hingga tahap implementasi, dapat disimpulkan bahwa aplikasi ``GOPOS (\textit{Go-Lang POS Assistant})'' telah berhasil diwujudkan sebagai asisten virtual cerdas yang handal bagi layanan PT Pos Indonesia. Penggunaan bahasa pemrograman Go yang dikombinasikan dengan arsitektur \textit{serverless} dan basis data MongoDB Atlas terbukti mampu menghasilkan sistem dengan performa tinggi yang dapat menangani data riwayat percakapan secara dinamis. Keberhasilan sistem ini juga didukung oleh integrasi model Gemini Pro AI yang mampu memberikan respon bahasa natural secara kontekstual, baik untuk kebutuhan informasi tarif pengiriman maupun layanan umum lainnya melalui platform web dan WhatsApp.
+Berdasarkan seluruh rangkaian penelitian yang mencakup tinjauan literatur sistematis (\textit{Systematic Literature Review}) serta pengembangan dan implementasi sistem, dapat disimpulkan hal-hal berikut:
 
-Implementasi antarmuka pada sisi frontend yang mencakup halaman beranda, \textit{dashboard} admin, dan fitur chat AI telah berfungsi secara optimal dengan tingkat responsivitas yang baik pada berbagai perangkat. Dari sisi validasi teknis, pengujian logika melalui metode \textit{White Box Testing} menggunakan \textit{unit testing} pada bahasa Go menunjukkan bahwa alur data internal, struktur koleksi pada database, serta fungsi normalisasi teks telah berjalan dengan akurat sesuai dengan spesifikasi yang dirancang. Secara teknis, sistem ini telah memenuhi standar kelayakan operasional tanpa adanya kesalahan logika krusial pada modul-modul utamanya, sehingga siap digunakan untuk meningkatkan efisiensi layanan pelanggan.
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Efektivitas LLM pada Layanan Pelanggan Logistik:} Hasil tinjauan literatur menunjukkan bahwa \textit{Large Language Models} (LLM) seperti Gemini AI terbukti lebih efektif dalam menangani pertanyaan pengguna secara natural dibandingkan sistem berbasis aturan (\textit{rule-based}). Implementasi pada sistem GOPOS memvalidasi temuan ini, di mana model Gemini Pro AI mampu memberikan respons bahasa natural secara kontekstual, baik untuk kebutuhan informasi tarif pengiriman maupun layanan umum lainnya melalui platform web dan WhatsApp.
+
+    \item \textbf{Keunggulan Golang dan Arsitektur \textit{Serverless}:} Studi literatur mengindikasikan bahwa arsitektur \textit{cloud-native} dan modular memberikan keunggulan skalabilitas otomatis serta efisiensi biaya operasional. Hal ini terkonfirmasi melalui implementasi GOPOS yang menggunakan bahasa pemrograman Go pada Google Cloud Functions, di mana sistem mampu menangani \textit{webhook chatbot} secara \textit{real-time} dengan performa tinggi dan biaya yang proporsional terhadap penggunaan aktual.
+
+    \item \textbf{Efisiensi NoSQL untuk Data Percakapan:} Tinjauan literatur menegaskan bahwa basis data NoSQL seperti MongoDB lebih unggul dibandingkan RDBMS dalam mengelola data percakapan yang dinamis dan tidak terstruktur. Implementasi MongoDB Atlas pada GOPOS membuktikan fleksibilitas skema dokumen dalam menyimpan riwayat percakapan yang bervariasi panjangnya serta metadata sesi pengguna tanpa batasan skema relasional.
+\end{enumerate}
+
+Dari aspek teknis implementasi, pengujian melalui metode \textit{White Box Testing} menggunakan \textit{unit testing} pada bahasa Go menunjukkan bahwa alur data internal, struktur koleksi pada database, serta fungsi-fungsi utama telah berjalan dengan akurat sesuai spesifikasi. Antarmuka pada sisi \textit{frontend} yang mencakup halaman beranda, \textit{dashboard} admin, dan fitur chat AI telah berfungsi secara optimal dengan tingkat responsivitas yang baik pada berbagai perangkat.
 
 \subsection{Saran}
 
-Meskipun sistem GOPOS saat ini telah berjalan dengan stabil, terdapat beberapa peluang pengembangan strategis yang dapat diimplementasikan untuk meningkatkan kapabilitas asisten virtual ini di masa depan. Pengembangan selanjutnya disarankan untuk mengintegrasikan sistem secara langsung dengan API pelacakan kiriman (\textit{tracking}) resmi dari PT Pos Indonesia guna memberikan kemudahan bagi pengguna dalam memantau status paket mereka secara instan melalui percakapan. Selain itu, proses \textit{fine-tuning} pada model AI menggunakan data internal perusahaan yang lebih spesifik serta penambahan fitur \textit{payment gateway} untuk transaksi ongkos kirim akan memberikan nilai tambah yang signifikan bagi ekosistem aplikasi. Peningkatan dari sisi keamanan melalui autentikasi dua faktor dan ekspansi ke berbagai kanal pesan instan lainnya juga menjadi langkah penting untuk menjamin perlindungan privasi pengguna sekaligus menjangkau basis pelanggan yang lebih luas secara \textit{multi-channel}.
+Berdasarkan hasil tinjauan literatur dan implementasi sistem, terdapat beberapa rekomendasi untuk penelitian dan pengembangan lebih lanjut:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Perluasan Cakupan SLR:} Penelitian tinjauan literatur selanjutnya disarankan untuk memperluas sumber pencarian ke basis data digital lain seperti IEEE Xplore, ACM Digital Library, dan Scopus guna memperoleh perspektif yang lebih komprehensif mengenai teknologi \textit{chatbot} cerdas di sektor logistik.
+
+    \item \textbf{Integrasi API Pelacakan:} Pengembangan selanjutnya disarankan untuk mengintegrasikan sistem secara langsung dengan API pelacakan kiriman (\textit{tracking}) resmi dari PT Pos Indonesia guna memberikan kemudahan bagi pengguna dalam memantau status paket secara instan melalui percakapan.
+
+    \item \textbf{\textit{Fine-tuning} Model AI:} Proses \textit{fine-tuning} pada model AI menggunakan data internal perusahaan yang lebih spesifik akan meningkatkan akurasi dan relevansi respons \textit{chatbot} terhadap pertanyaan yang bersifat domain-spesifik.
+
+    \item \textbf{Fitur Tambahan:} Penambahan fitur \textit{payment gateway} untuk transaksi ongkos kirim, autentikasi dua faktor untuk keamanan, serta ekspansi ke berbagai kanal pesan instan lainnya akan memberikan nilai tambah yang signifikan bagi ekosistem aplikasi.
+\end{enumerate}

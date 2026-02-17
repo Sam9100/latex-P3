@@ -2,52 +2,48 @@
 
 \subsection{Latar Belakang}
 
-Sektor logistik dan pengiriman merupakan bagian vital dalam mendukung pertumbuhan ekonomi dan konektivitas masyarakat di era digital. Sebagai salah satu penyedia layanan logistik terbesar di Indonesia, PT Pos Indonesia terus berupaya melakukan transformasi digital untuk meningkatkan kualitas layanan pelanggan. Namun, saat ini masyarakat seringkali menghadapi tantangan dalam mengakses informasi layanan secara cepat, seperti pencarian estimasi ongkos kirim (ongkir) atau pencarian lokasi kantor pos yang mengharuskan navigasi manual melalui situs web yang terkadang dinilai kurang praktis bagi pengguna perangkat seluler.
+Sektor logistik dan pengiriman merupakan komponen vital dalam mendukung pertumbuhan ekonomi serta konektivitas masyarakat di era transformasi digital. Di Indonesia, permintaan akan layanan pengiriman terus meningkat seiring berkembangnya \textit{e-commerce} dan perdagangan daring. Namun, layanan pelanggan konvensional di sektor ini masih menghadapi berbagai kendala, seperti keterbatasan jam operasional \textit{call center}, keharusan navigasi manual melalui situs web yang kurang praktis bagi pengguna perangkat seluler, serta waktu respons yang lambat saat volume pertanyaan pelanggan meningkat tajam.
 
-Di sisi lain, perkembangan teknologi \textit{Generative AI} membuka peluang untuk menciptakan interaksi yang lebih personal dan responsif melalui antarmuka percakapan (\textit{chatbot}). Penggunaan aplikasi pesan instan seperti WhatsApp sebagai platform utama komunikasi masyarakat dapat dimanfaatkan sebagai gerbang akses layanan informasi yang tersedia 24/7 tanpa terkendala jam operasional kantor fisik.
+Di sisi lain, perkembangan teknologi \textit{Large Language Models} (LLM) seperti Gemini AI dari Google membuka peluang besar untuk membangun asisten virtual yang mampu memahami bahasa alami (\textit{Natural Language Processing}) secara lebih luwes. Berbeda dengan \textit{chatbot} konvensional yang hanya berbasis aturan kaku (\textit{rule-based}), \textit{chatbot} berbasis LLM dapat memahami konteks percakapan, menginterpretasikan variasi pertanyaan pengguna, dan memberikan respons yang lebih natural serta relevan. Kemampuan ini menjadikan LLM sebagai solusi potensial untuk menghadirkan layanan pelanggan yang tersedia 24/7 dengan tingkat akurasi dan kepuasan pengguna yang lebih tinggi.
 
-Untuk mengatasi permasalahan tersebut, dibutuhkan sebuah platform asisten virtual cerdas yang mampu memahami bahasa alami pengguna dan memberikan informasi layanan pos secara instan. Dalam proyek ini, dikembangkan sebuah sistem asisten virtual bernama ``GOPOS'' (\textit{Go-Lang Pos Assistant}). Sistem ini dirancang dengan arsitektur teknologi modern yang menggabungkan performa tinggi dan kecerdasan buatan, antara lain:
+Dari sisi infrastruktur, bahasa pemrograman Golang (Go) dikenal memiliki performa tinggi dalam menangani permintaan secara konkuren berkat model \textit{goroutine}-nya, sehingga sangat cocok digunakan sebagai \textit{backend} yang menangani \textit{webhook chatbot} secara \textit{real-time}. Ketika dikombinasikan dengan arsitektur \textit{serverless} seperti Google Cloud Functions, sistem dapat memperoleh keunggulan skalabilitas otomatis dan efisiensi biaya operasional karena sumber daya komputasi hanya dialokasikan saat ada permintaan masuk.
 
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Golang (Go)} sebagai backend utama yang berjalan di lingkungan \textit{Serverless} Google Cloud Functions, dipilih karena efisiensinya dalam menangani webhook dan permintaan API secara cepat.
-    \item \textbf{Gemini AI} sebagai mesin kecerdasan buatan yang memungkinkan sistem memahami maksud pertanyaan pengguna (NLP) secara luwes, sehingga interaksi tidak terasa kaku.
-    \item \textbf{WhatsApp Gateway} sebagai antarmuka pengguna, memungkinkan akses layanan melalui aplikasi pesan yang sudah familiar bagi masyarakat.
-    \item \textbf{MongoDB} sebagai basis data NoSQL untuk menyimpan sesi percakapan dan log aktivitas secara fleksibel.
-\end{itemize}
+Selain itu, pengelolaan data percakapan \textit{chatbot} yang bersifat dinamis dan tidak terstruktur memerlukan solusi penyimpanan yang fleksibel. Basis data NoSQL seperti MongoDB menawarkan skema dokumen yang adaptif, memungkinkan penyimpanan riwayat percakapan, sesi pengguna, dan log aktivitas tanpa batasan skema relasional yang kaku sebagaimana pada \textit{Relational Database Management System} (RDBMS).
 
-Fitur unggulan dari GOPOS adalah kemampuannya dalam memberikan estimasi tarif pengiriman secara otomatis melalui logika dinamis pada backend serta menjawab berbagai pertanyaan umum seputar layanan pos melalui integrasi Gemini AI. Proyek ini bertujuan untuk mengintegrasikan teknologi cloud, kecerdasan buatan, dan layanan pesan instan dalam satu ekosistem asisten virtual yang utuh.
+Mengingat kompleksitas integasi berbagai teknologi tersebut LLM, Golang, arsitektur \textit{serverless}, dan basis data NoSQL dalam satu ekosistem asisten virtual untuk sektor logistik, diperlukan sebuah tinjauan literatur yang sistematis untuk mengevaluasi efektivitas masing-masing komponen. \textit{Systematic Literature Review} (SLR) dipilih sebagai pendekatan penelitian karena memungkinkan identifikasi, evaluasi, dan sintesis bukti ilmiah secara terstruktur serta dapat direproduksi. Penelitian ini menggunakan kerangka kerja PARSIFAL (\textit{Performing Systematic Literature Reviews In Software Engineering}) dengan pendekatan PICOC (\textit{Population, Intervention, Comparison, Outcome, Context}) untuk merumuskan pertanyaan penelitian dan strategi pencarian literatur secara komprehensif.
 
 \subsection{Rumusan Masalah}
 
-Berdasarkan latar belakang di atas, maka rumusan masalah dalam proyek ini adalah:
+Berdasarkan latar belakang di atas, maka rumusan masalah dalam penelitian ini adalah:
 
 \begin{enumerate}[leftmargin=*]
-    \item Bagaimana merancang dan membangun asisten virtual GOPOS berbasis \textit{chatbot} WhatsApp yang responsif menggunakan bahasa pemrograman Golang?
-    \item Bagaimana mengimplementasikan kecerdasan buatan menggunakan Gemini AI untuk menangani pertanyaan pengguna terkait layanan logistik secara natural?
-    \item Bagaimana melakukan integrasi sistem antara layanan backend Golang pada Google Cloud Platform, basis data MongoDB, dan WhatsApp Gateway?
+    \item Bagaimana efektivitas Gemini AI dalam menangani pertanyaan pengguna terkait layanan logistik secara natural dibandingkan sistem berbasis aturan (\textit{rule-based})?
+    \item Sejauh mana penggunaan Golang dan arsitektur \textit{serverless} meningkatkan skalabilitas dan efisiensi biaya operasional sistem \textit{chatbot}?
+    \item Mengapa basis data NoSQL MongoDB lebih efisien dibandingkan RDBMS dalam menyimpan riwayat percakapan \textit{chatbot} yang dinamis?
 \end{enumerate}
 
-\subsection{Tujuan}
+\subsection{Tujuan Penelitian}
 
-Tujuan dari pelaksanaan proyek ini adalah:
+Tujuan dari pelaksanaan penelitian ini adalah:
 
 \begin{enumerate}[leftmargin=*]
-    \item Mengembangkan asisten virtual GOPOS sebagai platform informasi layanan Pos Indonesia yang \textit{user-friendly} melalui media WhatsApp.
-    \item Membangun fitur cek ongkir otomatis dan tanya jawab cerdas menggunakan Gemini AI untuk membantu pengguna menemukan informasi secara cepat.
-    \item Mengimplementasikan integrasi teknologi Golang, MongoDB, dan infrastruktur cloud untuk mendukung skalabilitas dan ketersediaan layanan.
+    \item Menganalisis efektivitas integrasi \textit{Large Language Model} (LLM) seperti Gemini AI dalam meningkatkan pemahaman bahasa alami (\textit{Natural Language Processing}) pada layanan pelanggan di sektor logistik.
+    \item Mengevaluasi keunggulan performa bahasa pemrograman Golang dan arsitektur \textit{serverless} dalam menangani \textit{webhook chatbot} secara \textit{real-time}.
+    \item Meninjau penggunaan basis data NoSQL seperti MongoDB untuk pengelolaan data percakapan yang dinamis dan tidak terstruktur.
 \end{enumerate}
 
 \subsection{Ruang Lingkup}
 
-Ruang lingkup dalam pengembangan sistem ini meliputi:
+Ruang lingkup dalam penelitian tinjauan literatur sistematis ini meliputi:
 
 \begin{itemize}[leftmargin=*]
-    \item \textbf{Fokus Pengembangan:} Asisten virtual berbasis teks (WhatsApp) dengan dukungan kecerdasan buatan untuk layanan logistik.
-    \item \textbf{Layanan Backend:} Menggunakan bahasa pemrograman Golang yang di-\textit{deploy} melalui Google Cloud Functions.
-    \item \textbf{Kecerdasan Buatan:} Pemanfaatan Gemini AI untuk pemrosesan bahasa alami (NLP) pada percakapan umum.
-    \item \textbf{Pengelolaan Data:} Penyimpanan data sesi dan konfigurasi sistem dilakukan menggunakan basis data NoSQL MongoDB.
-    \item \textbf{Fitur Utama:} Mencakup pengecekan estimasi ongkos kirim domestik, pencarian informasi layanan, dan interaksi percakapan natural.
-    \item \textbf{Pengguna:} Target pengguna adalah masyarakat umum yang memerlukan informasi layanan PT Pos Indonesia secara instan.
+    \item \textbf{Jenis Penelitian:} \textit{Systematic Literature Review} (SLR) menggunakan kerangka kerja PARSIFAL dengan pendekatan PICOC.
+    \item \textbf{Sumber Literatur:} Pencarian literatur dilakukan melalui Google Scholar (\url{https://scholar.google.com}).
+    \item \textbf{Rentang Waktu:} Karya ilmiah yang diterbitkan dalam rentang tahun 2021--2026.
+    \item \textbf{Domain Kajian:} Otomatisasi layanan pelanggan di bidang logistik atau pengiriman, pengembangan \textit{chatbot} atau asisten virtual berbasis AI, implementasi LLM, arsitektur \textit{serverless}, dan basis data NoSQL.
+    \item \textbf{Kriteria Inklusi:} Penelitian yang membahas pengembangan \textit{chatbot} berbasis AI, implementasi LLM seperti Gemini AI, efisiensi Golang atau arsitektur \textit{serverless} pada \textit{backend}, serta artikel dalam bahasa Inggris atau Indonesia yang tersedia dalam format \textit{full-text}.
+    \item \textbf{Kriteria Eksklusi:} Literatur yang bukan berupa artikel riset, \textit{chatbot} yang hanya berbasis aturan kaku, penelitian yang tidak berkaitan dengan sektor logistik, artikel tanpa \textit{full-text}, dan bahasa selain Inggris atau Indonesia.
+    \item \textbf{\textit{Search String}:} \texttt{("Chatbot" OR "Virtual Assistant" OR "Conversational Agent") AND ("Gemini AI" OR "Large Language Models" OR "LLM" OR "Generative AI") AND ("Golang" OR "Serverless" OR "Cloud Functions") AND ("Logistics" OR "Shipping" OR "Postal Service")}
 \end{itemize}
 
 \subsection{Sistematika Penulisan}
@@ -55,9 +51,9 @@ Ruang lingkup dalam pengembangan sistem ini meliputi:
 Laporan penelitian ini terdiri dari beberapa bab dengan sistematika sebagai berikut:
 
 \begin{itemize}[leftmargin=*]
-    \item \textbf{BAB I Pendahuluan:} Menguraikan latar belakang, rumusan masalah, tujuan penelitian, ruang lingkup dan sistematika penulisan.
-    \item \textbf{BAB II Landasan Teori:} Membahas teori penunjang seperti konsep \textit{Serverless Architecture}, Golang, \textit{Generative AI} (Gemini), MongoDB, dan WhatsApp Gateway.
-    \item \textbf{BAB III Metodologi Penelitian:} Menjelaskan metodologi pengembangan (Agile), analisis kebutuhan sistem, perancangan arsitektur cloud, dan perancangan alur percakapan \textit{chatbot}.
-    \item \textbf{BAB IV Hasil dan Pembahasan:} Menampilkan hasil implementasi kode program, integrasi API, serta analisis terhadap performa \textit{chatbot} dalam merespons pengguna.
-    \item \textbf{BAB V Penutup:} Berisi kesimpulan dari pengembangan asisten virtual GOPOS serta saran untuk pengembangan fitur lebih lanjut.
+    \item \textbf{BAB I Pendahuluan:} Menguraikan latar belakang, rumusan masalah, tujuan penelitian, ruang lingkup, dan sistematika penulisan.
+    \item \textbf{BAB II Landasan Teori:} Membahas teori penunjang seperti konsep \textit{Large Language Models} (LLM), Gemini AI, bahasa pemrograman Golang, arsitektur \textit{serverless}, basis data NoSQL MongoDB, \textit{chatbot}, dan WhatsApp Gateway.
+    \item \textbf{BAB III Metodologi Penelitian:} Menjelaskan metode \textit{Systematic Literature Review} (SLR), kerangka kerja PARSIFAL, formulasi PICOC, strategi pencarian, kriteria seleksi, \textit{quality assessment}, dan \textit{data extraction form}.
+    \item \textbf{BAB IV Hasil dan Pembahasan:} Menampilkan hasil seleksi literatur, ekstraksi data, analisis temuan berdasarkan pertanyaan penelitian, serta sintesis bukti ilmiah.
+    \item \textbf{BAB V Penutup:} Berisi kesimpulan dari tinjauan literatur sistematis serta saran untuk penelitian dan pengembangan lebih lanjut.
 \end{itemize}
